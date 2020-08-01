@@ -1,0 +1,44 @@
+{
+  "name": "hiveman",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alxwrd/hiveman.git"
+  },
+  "author": "Alex Ward (alxwrd@googlemail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alxwrd/hiveman/issues"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "autobuild": "rollup -c -w",
+    "dev": "run-p start:dev autobuild",
+    "start": "sirv public",
+    "start:dev": "sirv public --dev",
+    "publish": "npm run build && gh-pages -d public"
+  },
+  "homepage": "https://github.com/alxwrd/hiveman#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "gh-pages": "3.1.0",
+    "tailwindcss": "1.6.0",
+    "@fullhuman/postcss-purgecss": "2.0.3",
+    "autoprefixer": "9.8.6",
+    "npm-run-all": "4.1.5",
+    "postcss": "7.0.32",
+    "postcss-import": "12.0.1",
+    "rollup": "2.23.0",
+    "@rollup/plugin-commonjs": "14.0.0",
+    "@rollup/plugin-node-resolve": "8.4.0",
+    "rollup-plugin-livereload": "1.3.0",
+    "rollup-plugin-postcss": "3.1.3",
+    "rollup-plugin-svelte": "5.2.3",
+    "rollup-plugin-terser": "6.1.0",
+    "sirv-cli": "1.0.5",
+    "svelte": "3.24.0",
+    "svelte-preprocess": "4.0.8"
+  }
+}
