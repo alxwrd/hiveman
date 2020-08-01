@@ -202,6 +202,11 @@ textarea {
  * 2. Remove the padding in IE 10.
  */
 
+[type="checkbox"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
@@ -614,6 +619,12 @@ img {
   border-color: rgba(203, 213, 224, var(--border-opacity));
 }
 
+.border-red-400 {
+  --border-opacity: 1;
+  border-color: #fc8181;
+  border-color: rgba(252, 129, 129, var(--border-opacity));
+}
+
 .border-yellow-600 {
   --border-opacity: 1;
   border-color: #d69e2e;
@@ -770,6 +781,10 @@ img {
 
 .mb-6 {
   margin-bottom: 1.5rem;
+}
+
+.outline-none {
+  outline: 0;
 }
 
 .overflow-auto {
