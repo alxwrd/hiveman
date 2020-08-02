@@ -66,10 +66,18 @@ export function nodes() {
       ];
 
       return useableNodes.some((type) => {
-        return node.attributes.nodeType.reportedValue.includes(type)
+        return node.attributes.powerSupply && node.attributes.nodeType.reportedValue.includes(type)
       })
     })
   })
+}
+
+
+export function node(id) {
+  return request(
+    `/nodes/${id}`,
+    "GET",
+  ).then(data => data)
 }
 
 export function modify(id, targetValue) {
@@ -87,18 +95,18 @@ export function modify(id, targetValue) {
 }
 
 export function turnOn(id) {
-  modify(id, {
+  return modify(id, {
     state: {
       targetValue: "ON"
     }          
-  }).then(data => data)
+  }).then(data => data.nodes[0])
 };
 
 
 export function turnOff(id) {
-  modify(id, {
+  return modify(id, {
     state: {
       targetValue: "OFF"
     }          
-  }).then(data => data)
+  }).then(data => data.nodes[0])
 };
