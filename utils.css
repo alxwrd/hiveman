@@ -577,18 +577,6 @@ img {
   background-color: rgba(255, 255, 255, var(--bg-opacity));
 }
 
-.bg-yellow-100 {
-  --bg-opacity: 1;
-  background-color: #fffff0;
-  background-color: rgba(255, 255, 240, var(--bg-opacity));
-}
-
-.bg-yellow-500 {
-  --bg-opacity: 1;
-  background-color: #ecc94b;
-  background-color: rgba(236, 201, 75, var(--bg-opacity));
-}
-
 .bg-yellow-600 {
   --bg-opacity: 1;
   background-color: #d69e2e;
@@ -599,12 +587,6 @@ img {
   --bg-opacity: 1;
   background-color: #ecc94b;
   background-color: rgba(236, 201, 75, var(--bg-opacity));
-}
-
-.hover\:bg-yellow-700:hover {
-  --bg-opacity: 1;
-  background-color: #b7791f;
-  background-color: rgba(183, 121, 31, var(--bg-opacity));
 }
 
 .border-gray-400 {
@@ -709,12 +691,16 @@ img {
   height: 2rem;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .h-16 {
   height: 4rem;
 }
 
-.h-64 {
-  height: 16rem;
+.h-48 {
+  height: 12rem;
 }
 
 .h-full {
@@ -805,10 +791,6 @@ img {
   padding-right: 1rem;
 }
 
-.pb-2 {
-  padding-bottom: 0.5rem;
-}
-
 .fixed {
   position: fixed;
 }
@@ -849,10 +831,20 @@ img {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+.shadow-inner {
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
 .text-white {
   --text-opacity: 1;
   color: #fff;
   color: rgba(255, 255, 255, var(--text-opacity));
+}
+
+.text-gray-500 {
+  --text-opacity: 1;
+  color: #a0aec0;
+  color: rgba(160, 174, 192, var(--text-opacity));
 }
 
 .text-gray-700 {
@@ -865,6 +857,16 @@ img {
   --text-opacity: 1;
   color: #2d3748;
   color: rgba(45, 55, 72, var(--text-opacity));
+}
+
+.text-yellow-500 {
+  --text-opacity: 1;
+  color: #ecc94b;
+  color: rgba(236, 201, 75, var(--text-opacity));
+}
+
+.w-10 {
+  width: 2.5rem;
 }
 
 .w-64 {
@@ -930,10 +932,6 @@ img {
 
   .md\:text-3xl {
     font-size: 1.875rem;
-  }
-
-  .md\:w-64 {
-    width: 16rem;
   }
 
   .md\:w-1\/6 {
