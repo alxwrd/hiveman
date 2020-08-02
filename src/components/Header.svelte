@@ -8,7 +8,6 @@
   const unsub = auth.subscribe(value => {
     authDetails = value;
     userHash = md5(authDetails.username || "");
-    console.log(userHash);
   });
 </script>
 

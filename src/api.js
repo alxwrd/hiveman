@@ -26,11 +26,11 @@ export function request(route, method, body, headers) {
     body: body,
   }).then((response) => {
     if (!response.ok && response.status === 401) {
-      auth.set(undefined);
+      auth.set({});
       throw new Error(`Not authorised, check authdetails: ${auth}`);
     }
     return response;
-  });
+  }).then(response => response.json());
 }
 
 export function login(username, password) {
@@ -47,14 +47,58 @@ export function login(username, password) {
       ],
     })
   )
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error();
-      }
-      return response.json();
-    })
     .then((data) => {
       auth.set(data.sessions[0]);
       return data;
     });
 }
+
+export function nodes() {
+  return request(
+    "/nodes",
+    "GET",
+  ).then(data => {
+    return data.nodes.filter((node) => {
+      let useableNodes = [
+        "node.class.light.json",
+        "node.class.colour.tunable.light.json",
+        "node.class.smartplug.json",
+      ];
+
+      return useableNodes.some((type) => {
+        return node.attributes.nodeType.reportedValue.includes(type)
+      })
+    })
+  })
+}
+
+export function modify(id, targetValue) {
+  return request(
+    `/nodes/${id}`,
+    "PUT",
+    JSON.stringify({
+      nodes: [
+        {
+          attributes: targetValue
+        },
+      ],
+    })
+  ).then(data => data)
+}
+
+export function turnOn(id) {
+  modify(id, {
+    state: {
+      targetValue: "ON"
+    }          
+  }).then(data => data)
+};
+
+
+export function turnOff(id) {
+  modify(id, {
+    state: {
+      targetValue: "OFF"
+    }          
+  }).then(data => data)
+};
