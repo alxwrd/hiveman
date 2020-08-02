@@ -9,8 +9,8 @@ const unsub = auth.subscribe((value) => {
 
 export function request(route, method, body, headers) {
   headers = Object.assign(headers || {}, {
-    "Content-Type": "application/vnd.alertme.zoo-6.1+json",
-    "Accept": "application/vnd.alertme.zoo-6.1+json",
+    "Content-Type": "application/vnd.alertme.zoo-6.3+json",
+    "Accept": "application/vnd.alertme.zoo-6.3+json",
     "X-Omnia-Client": "Hive Web Dashboard",
   });
 
