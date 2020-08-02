@@ -1,8 +1,8 @@
 
-import App from './App.svelte';
+import Main from './Main.svelte';
 import './utils.css';
 
-const app = new App({
+const app = new Main({
   target: document.body,
 });
 
