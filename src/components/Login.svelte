@@ -1,7 +1,6 @@
 <script>
   import Field from "./Field.svelte";
 
-  import { token } from "../stores.js";
   import * as api from "../api.js";
 
   let username;

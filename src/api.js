@@ -1,10 +1,10 @@
-import { token } from "./stores.js";
+import { auth } from "./stores.js";
 
 const base = "https://api.prod.bgchprod.info:443/omnia";
 
-let tokenval;
-const unsub = token.subscribe((value) => {
-  tokenval = value;
+let authDetails;
+const unsub = auth.subscribe((value) => {
+  authDetails = value;
 });
 
 export function request(route, method, body, headers) {
@@ -14,9 +14,9 @@ export function request(route, method, body, headers) {
     "X-Omnia-Client": "Hive Web Dashboard",
   });
 
-  if (tokenval) {
+  if (Object.keys(authDetails).length) {
     headers = Object.assign(headers, {
-      "X-Omnia-Access-Token": tokenval,
+      "X-Omnia-Access-Token": authDetails.sessionId,
     });
   }
 
@@ -24,10 +24,10 @@ export function request(route, method, body, headers) {
     method: method,
     headers: headers,
     body: body,
-  })
-  .then((response) => {
-    if(!response.ok && response.status === 401) {
-        throw new Error(`Not authorised, check token: ${tokenval}`)
+  }).then((response) => {
+    if (!response.ok && response.status === 401) {
+      auth.set(undefined);
+      throw new Error(`Not authorised, check authdetails: ${auth}`);
     }
     return response;
   });
@@ -54,7 +54,7 @@ export function login(username, password) {
       return response.json();
     })
     .then((data) => {
-      token.set(data.sessions[0].sessionId);
+      auth.set(data.sessions[0]);
       return data;
     });
 }

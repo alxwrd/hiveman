@@ -1,11 +1,11 @@
 <script>
   import Login from "./components/Login.svelte";
 
-  import { token } from "./stores.js";
+  import { auth } from "./stores.js";
 
   let authed = false;
-  const unsub = token.subscribe(value => {
-    authed = value ? true : false;
+  const unsub = auth.subscribe(value => {
+    authed = value.sessionId ? true : false;
   });
 </script>
 
