@@ -12,11 +12,18 @@ export const localStorage = {
 };
 
 
-export const auth = writable(localStorage.get("auth") || {});
+export const auth = writable(localStorage.get("auth", {}));
 
 
 const authSubscription = auth.subscribe((value) => {
+  let reload = false;
+  if (Object.keys(localStorage.get("auth", {})).length === 0 && Object.keys(value).length) {
+    reload = true;
+  }
   localStorage.set("auth", value);
+  if (reload) {
+    location.reload();
+  }
 });
 
 
