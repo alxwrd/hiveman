@@ -23,9 +23,9 @@
       on:click={() => {
         auth.set({});
       }}>
-      <div class="py-4 md:py-2">
+      <div class="py-4">
         <img
-          class="h-8 md:h-12 mx-6 absolute right-0 rounded-full shadow-md
+          class="h-8 mx-6 absolute right-0 rounded-full shadow-md
           hover:scale-105 transform transition-transform ease-in-out
           duration-500"
           src="https://www.gravatar.com/avatar/{userHash}?d=identicon"
