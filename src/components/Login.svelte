@@ -1,5 +1,6 @@
 <script>
   import Field from "./Field.svelte";
+  import Logo from "./Logo.svelte";
 
   import * as api from "../api.js";
 
@@ -16,14 +17,8 @@
 </script>
 
 <div class="w-10/12 lg:w-8/12 xl:w-5/12">
-  <div class="w-full py-6 flex justify-center items-center">
-    <img
-      class="lg:h-32 md:h-24 h-16"
-      src="assests/hive.svg"
-      alt="Logo, of a bee hive" />
-    <p class="lg:text-5xl md:text-4xl text-2xl px-2 font-bold text-gray-800">
-      Hiveman
-    </p>
+  <div class="h-16 sm:h-24 md:h-32 my-4">
+    <Logo />
   </div>
   <div
     class="border-yellow-600 p-8 border-t-8 bg-white mb-6 rounded-lg shadow-lg">
